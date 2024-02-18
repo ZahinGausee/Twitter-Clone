@@ -10,7 +10,7 @@ function YourProfile() {
   const userData = useSelector(state => state.auth.userData);
 
   useEffect(() => {
-    if( authStatus && userData )  {
+    if(userData)  {
       databaseService.getPosts()
       .then((posts) => {
         if(posts) setPosts(posts.documents);
@@ -32,7 +32,7 @@ function YourProfile() {
     </Container>
   ) :  (
     <Container>
-      <center className='text-3xl text-white bg-black items-center'>Plz add Post First</center>)
+      <center className='text-3xl text-white bg-black items-center m-4'>Plz add a post first {'>:'}</center>
     </Container>
   )
 }

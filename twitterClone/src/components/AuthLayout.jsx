@@ -16,9 +16,7 @@ function AuthLayout({children, authentication = true }) {
     }
     setLoader(false);
   }, [authStatus, navigate, authentication]);
-  return loader ? (
-    <center className='text-3xl text-center flex items-center justify-center bg-black w-full mt-[50vh]'><Logo className='w-16'/></center>
-  ) : <>{children}</>;
+  return loader ?  null : <>{children}</>;
 }
 
 export default AuthLayout

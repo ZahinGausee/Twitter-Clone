@@ -3,8 +3,7 @@ import reactLogo from './assets/react.svg'
 import { useDispatch } from 'react-redux'
 import { login, logout } from './store/authSlice';
 import authService  from './appwrite/auth'
-import { Header, Footer, Container, Logo, Login, PostForm, PostCard} from './components'
-import Signup from './components/Signup';
+import { Header, Footer, Logo} from './components'
 import { Outlet } from 'react-router-dom';
 
 function App() {

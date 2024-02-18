@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import authService from '../appwrite/auth'
 import {Link ,useNavigate} from 'react-router-dom'
-import {login} from '../store/authSlice'
-import {Button, Input, Logo} from './index.js'
+import {login as authLogin} from '../store/authSlice'
+import {Button, Input} from './index.js'
 import {useDispatch} from 'react-redux'
 import {useForm} from 'react-hook-form'
 
@@ -15,11 +15,11 @@ function Signup() {
     const create = async(data) => {
         setError("")
         try {
-            const userData = await authService.createAccount(data)
+            const userData = await authService.createAccount(data);
             if (userData) {
                 const userData = await authService.getCurrentUser()
-                if(userData) dispatch(login(userData));
-                navigate("/")
+                if(userData) dispatch(authLogin(userData));
+                navigate("/");
             }
         } catch (error) {
             setError(error.message)
@@ -27,12 +27,9 @@ function Signup() {
     }
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center text-black">
             <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
             <div className="mb-2 flex justify-center">
-                    <span className="inline-block w-full max-w-[100px]">
-                        <Logo width="100%" />
-                    </span>
                 </div>
                 <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
                 <p className="mt-2 text-center text-base text-black/60">
